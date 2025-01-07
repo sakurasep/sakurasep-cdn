@@ -4300,11 +4300,16 @@ p>strong>span.tag-plugin.icon {
   text-align: justify;
   margin-top: 0.5rem;
 }
+.tag-plugin.tabs .tab-content .tab-pane {
+  display: block;
+}
 .tag-plugin.tabs .tab-content .tab-pane:not(.active) {
-  display: none;
+  visibility: hidden;
+  height: 0;
 }
 .tag-plugin.tabs .tab-content .tab-pane.active {
-  display: block;
+  visibility: visible;
+  height: auto;
 }
 .tag-plugin.tabs .tab-content:has(.grid-box) {
   width: 100%;
@@ -4414,7 +4419,7 @@ p>strong>span.tag-plugin.icon {
   transform: scale(2);
 }
 .tag-plugin.timeline .body {
-  background: var(--block);
+  background: var(--card);
   border-radius: 12px;
   border-top-left-radius: 2px;
   padding: 0.5rem 1rem;
@@ -4823,7 +4828,7 @@ details.toc[open] >div.body section .header+.doc_tree {
   font-weight: 500;
   color: var(--text-p3);
   text-align: center;
-  background: var(--block);
+  background: var(--alpha50);
   transition: background 0.2s ease-out;
   -moz-transition: background 0.2s ease-out;
   -webkit-transition: background 0.2s ease-out;
@@ -4888,10 +4893,10 @@ details.toc[open] >div.body section .header+.doc_tree {
   z-index: 0;
   border-radius: 8px;
   color: var(--text);
-  background: var(--block);
+  background: var(--alpha50);
 }
 .search-wrapper >.search-form:has(input:focus) {
-  background: var(--alpha50);
+  background: var(--alpha100);
 }
 .search-wrapper .search-input {
   width: 100%;
@@ -5032,7 +5037,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 }
 .l_left {
   background-size: cover;
-  background: #1c1e21;
+  background-image: url("https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.13/image/sidebar-bg1@small.jpg");
 }
 .l_left .leftbar-container {
   height: 100%;
@@ -5040,6 +5045,15 @@ details.toc[open] >div.body section .header+.doc_tree {
   flex-direction: column;
   word-break: break-all;
   text-align: justify;
+  --blur-px: 100px;
+  --blur-bg: var(--alpha60);
+}
+@supports ((-webkit-backdrop-filter: blur(var(--blur-px))) or (backdrop-filter: blur(var(--blur-px)))) {
+  .l_left .leftbar-container {
+    background: var(--blur-bg);
+    backdrop-filter: saturate(240%) blur(var(--blur-px));
+    -webkit-backdrop-filter: saturate(240%) blur(var(--blur-px));
+  }
 }
 .widget-body .linklist {
   display: grid;
@@ -5179,7 +5193,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 }
 .widget-wrapper.user-card .widget-body {
   text-align: center;
-  background: var(--block);
+  background: var(--card);
   border-radius: 12px;
   padding: 1rem;
   box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
@@ -5311,7 +5325,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 .widget-wrapper.markdown .widget-body {
   border-radius: 12px;
   padding: 4px 16px;
-  background: var(--block);
+  background: var(--alpha50);
 }
 .widget-wrapper.markdown .widget-body a:not([class]) {
   transition: all 0.2s ease-out;
@@ -5384,7 +5398,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 .widget-wrapper.tagcloud .widget-body {
   border-radius: 12px;
   padding: 12px 16px;
-  background: var(--block);
+  background: var(--alpha50);
 }
 .widget-wrapper.tagcloud .widget-body a {
   word-break: break-word;
@@ -5443,7 +5457,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 }
 .widget-wrapper.timeline .tag-plugin.timeline .timenode .body .highlight,
 .widget-wrapper.timeline .tag-plugin.timeline .timenode .body pre:not([class]):has(>code) {
-  background: var(--block);
+  background: var(--alpha50);
 }
 .widget-wrapper.timeline .tag-plugin.timeline[api] .body .footer {
   background: none;
@@ -5456,7 +5470,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 }
 .l_left .widget-wrapper.timeline .body {
   box-shadow: none;
-  background: var(--block);
+  background: var(--alpha50);
 }
 .widget-wrapper.toc {
   background: var(--site-bg);
@@ -5691,7 +5705,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 }
 .widgets .loading-wrap {
   margin: 0.5rem 0;
-  background: var(--block);
+  background: var(--alpha50);
 }
 .widgets {
   overflow: scroll;
@@ -5725,7 +5739,7 @@ details.toc[open] >div.body section .header+.doc_tree {
   line-height: 28px;
   font-weight: 500;
   font-size: 0.8125rem;
-  color: #eee1ca;
+  color: var(--text-p1);
 }
 .widgets .widget-wrapper .widget-header .item {
   display: block;
@@ -7221,7 +7235,7 @@ a[data-fancybox] {
 .twikoo .tk-submit {
   padding: 1rem 1rem 0 1rem;
   border-radius: 12px;
-  background: #27292c;
+  background: var(--block);
 }
 .twikoo .tk-tag {
   vertical-align: 0.1em;
