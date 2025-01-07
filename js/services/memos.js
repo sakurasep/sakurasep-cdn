@@ -79,10 +79,15 @@ utils.jq(() => {
                 .map(res => {
                     const resourceId = res.name.split('/')[1]; // 提取资源ID
                     const fileName = res.filename;            // 提取文件名
-                    return `<div class="image-bg">
-                    <img src="https://memos.sakurasep.site/file/resources/${resourceId}/${fileName}">
-                  </div>`;
+                    const imageUrl = `https://memos.sakurasep.site/file/resources/${resourceId}/${fileName}`;
+                    return `
+                <div class="image-bg">
+                    <a href="${imageUrl}" data-fancybox="gallery">
+                        <img src="${imageUrl}" alt="image">
+                    </a>
+                </div>`;
                 });
         }
+
     });
 });
